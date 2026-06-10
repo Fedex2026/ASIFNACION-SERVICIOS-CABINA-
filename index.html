@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASIGNACION SERVICIOS CABINA - Admin</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="admin-app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div>
+          <h1>ROAD ASSIST</h1>
+          <p>Cabina de asignación</p>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <button class="menu-item active"><i class="fa-solid fa-map-location-dot"></i> Mapa en vivo</button>
+        <button class="menu-item"><i class="fa-solid fa-list-check"></i> Solicitudes <span id="badgeRequests">1</span></button>
+        <button class="menu-item"><i class="fa-solid fa-truck-pickup"></i> Unidades</button>
+        <button class="menu-item"><i class="fa-solid fa-route"></i> Servicios activos</button>
+        <button class="menu-item"><i class="fa-regular fa-clock"></i> Historial</button>
+        <button class="menu-item"><i class="fa-solid fa-chart-line"></i> Reportes</button>
+        <button class="menu-item"><i class="fa-solid fa-users"></i> Clientes</button>
+        <button class="menu-item"><i class="fa-solid fa-bell"></i> Alertas <span>3</span></button>
+        <button class="menu-item"><i class="fa-solid fa-gear"></i> Configuración</button>
+      </nav>
+
+      <div class="side-bottom">
+        <div class="weather">
+          <i class="fa-solid fa-cloud-sun-rain"></i>
+          <div><b>18°C</b><small>Lluvia ligera</small></div>
+        </div>
+        <div class="clock">
+          <strong id="clock">09:42</strong>
+          <small id="dateText">21/may/2024</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="tabs">
+          <button class="tab active">Dashboard</button>
+          <button class="tab">Servicios</button>
+          <button class="tab">Unidades</button>
+          <button class="tab">Solicitudes</button>
+          <button class="tab">Clientes</button>
+          <button class="tab">Reportes</button>
+          <button class="tab">Configuración</button>
+        </div>
+
+        <div class="operator">
+          <i class="fa-solid fa-bell notice"></i>
+          <img src="https://i.pravatar.cc/100?img=13" />
+          <div>
+            <b>Dispatcher</b>
+            <small>Centro de Control</small>
+          </div>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="map-card">
+          <div class="card-header">
+            <div>
+              <h2>Mapa en vivo</h2>
+              <p><span class="dot green"></span> Actualizado hace <b id="seconds">10</b> seg</p>
+            </div>
+            <button class="filter"><i class="fa-solid fa-filter"></i> Filtros</button>
+          </div>
+
+          <div class="map">
+            <div class="grid"></div>
+
+            <svg class="zone-svg" viewBox="0 0 1000 680" preserveAspectRatio="none">
+              <path class="zone zone4" d="M130,80 L430,45 L585,190 L505,380 L230,350 L70,205 Z"/>
+              <path class="zone zone3" d="M580,120 L920,115 L955,315 L780,445 L510,380 L585,190 Z"/>
+              <path class="zone zone2" d="M75,210 L230,350 L505,380 L430,630 L105,595 L25,385 Z"/>
+              <path class="zone zone1" d="M510,380 L780,445 L840,610 L430,630 Z"/>
+            </svg>
+
+            <div class="zone-label label4"><b>Zona 4</b><span>Cuautitlán Izcalli</span></div>
+            <div class="zone-label label3"><b>Zona 3</b><span>Coacalco / Tultitlán</span></div>
+            <div class="zone-label label2"><b>Zona 2</b><span>Tlalnepantla / Atizapán</span></div>
+            <div class="zone-label label1"><b>Zona 1</b><span>Naucalpan / Satélite</span></div>
+
+            <div class="road road-a"></div>
+            <div class="road road-b"></div>
+            <div class="road road-c"></div>
+
+            <button class="zoom zplus">+</button>
+            <button class="zoom zminus">−</button>
+            <button class="zoom zloc"><i class="fa-solid fa-location-crosshairs"></i></button>
+
+            <div class="vehicle selected" data-unit="AX-07" style="left:67%;top:67%;">🚗</div>
+            <div class="vehicle" data-unit="MX-12" style="left:31%;top:72%;">🚙</div>
+            <div class="vehicle" data-unit="GR-04" style="left:73%;top:31%;">🚚</div>
+            <div class="vehicle" data-unit="MT-08" style="left:47%;top:24%;">🏍️</div>
+
+            <div class="request-pin" style="left:49%;top:51%;">
+              <i class="fa-solid fa-car-burst"></i>
+              <div class="pin-card">
+                <b>Solicitud activa</b>
+                <span>Folio RAS-2024-1057</span>
+                <small>Cambio de llanta</small>
+              </div>
+            </div>
+
+            <svg class="route-line" viewBox="0 0 1000 680" preserveAspectRatio="none">
+              <path d="M670 455 C610 435, 565 405, 490 350" />
+            </svg>
+          </div>
+
+          <div class="stats">
+            <div><small>Unidades disponibles</small><b>14</b></div>
+            <div><small>En servicio</small><b>9</b></div>
+            <div><small>Solicitudes activas</small><b id="activeRequests">1</b></div>
+            <div><small>Tiempo prom. respuesta</small><b>14 min</b></div>
+          </div>
+        </section>
+
+        <aside class="request-panel">
+          <div class="panel-head">
+            <h2>Nueva solicitud <span>1</span></h2>
+            <button id="hidePanel"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="service-box">
+            <small>Tipo de servicio</small>
+            <h3><i class="fa-solid fa-screwdriver-wrench"></i> Cambio de llanta</h3>
+          </div>
+
+          <div class="data-row">
+            <div>
+              <small>Cliente</small>
+              <p>María Fernanda López</p>
+            </div>
+            <div>
+              <small>Prioridad</small>
+              <span class="pill orange">Media</span>
+            </div>
+          </div>
+
+          <div class="data-row full">
+            <div>
+              <small>Ubicación</small>
+              <p>Av. Gustavo Baz 100, Col. La Loma, Tlalnepantla, Edo. de México</p>
+            </div>
+          </div>
+
+          <div class="distance"><i class="fa-solid fa-route"></i> Distancia al punto: <b>1.8 km</b></div>
+
+          <h4>Unidades cercanas</h4>
+          <div id="unitList" class="unit-list"></div>
+
+          <button id="assignBtn" class="action green">Asignar a AX-07</button>
+          <button id="reassignBtn" class="action blue">Reasignar solicitud</button>
+          <button id="cancelBtn" class="action red">Cancelar solicitud</button>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast">Servicio asignado correctamente</div>
+  <script src="script.js"></script>
+</body>
+</html>
