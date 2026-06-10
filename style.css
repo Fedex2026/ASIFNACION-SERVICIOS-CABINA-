@@ -743,3 +743,107 @@ body {
     width: auto;
   }
 }
+/* ========================= */
+/* NUEVOS PANELES CABINA */
+/* ========================= */
+
+.extra-panel {
+  margin: 16px;
+  padding: 14px;
+  background: #0a1626;
+  border: 1px solid #1f314e;
+  border-radius: 14px;
+}
+
+.extra-panel h4 {
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.extra-panel p {
+  margin-bottom: 8px;
+  color: #d7e5f8;
+  font-size: 13px;
+}
+
+.extra-panel button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #284461;
+  background: #10233d;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.extra-panel button:hover {
+  background: #183253;
+  border-color: #2d8cff;
+}
+
+#currentStatus {
+  background: #081221;
+  border: 1px solid #284461;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: 700;
+  color: #2ee071;
+}
+
+#historyList {
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  background: #081221;
+  border: 1px solid #284461;
+  border-radius: 10px;
+  padding: 10px;
+  color: #d7e5f8;
+  font-size: 12px;
+}
+
+.history-item:hover {
+  border-color: #2d8cff;
+}
+
+#todayServices,
+#finishedServices,
+#cancelledServices,
+#connectedOperators {
+  color: #2ee071;
+  font-weight: 800;
+}
+
+/* Scroll bonito */
+
+.request-panel::-webkit-scrollbar,
+#historyList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.request-panel::-webkit-scrollbar-track,
+#historyList::-webkit-scrollbar-track {
+  background: #081221;
+}
+
+.request-panel::-webkit-scrollbar-thumb,
+#historyList::-webkit-scrollbar-thumb {
+  background: #284461;
+  border-radius: 20px;
+}
+
+.request-panel::-webkit-scrollbar-thumb:hover,
+#historyList::-webkit-scrollbar-thumb:hover {
+  background: #2d8cff;
+}
