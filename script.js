@@ -279,3 +279,107 @@ setInterval(updateSeconds, 1000);
 updateClock();
 renderUnits();
 resetButtons();
+/* ========================= */
+/* ESTADOS DEL SERVICIO */
+/* ========================= */
+
+const currentStatus = document.getElementById("currentStatus");
+const historyList = document.getElementById("historyList");
+
+function updateServiceStatus(status) {
+
+  currentStatus.textContent = status;
+
+  const item = document.createElement("div");
+
+  item.className = "history-item";
+
+  item.innerHTML = `
+    ${new Date().toLocaleTimeString()} - ${status}
+  `;
+
+  historyList.prepend(item);
+
+  showToast("Estado actualizado: " + status);
+}
+
+/* ========================= */
+/* BOTONES ESTADO */
+/* ========================= */
+
+document.getElementById("statusAssigned")
+?.addEventListener("click", () => {
+  updateServiceStatus("📋 Asignado");
+});
+
+document.getElementById("statusRoute")
+?.addEventListener("click", () => {
+  updateServiceStatus("🚗 En Camino");
+});
+
+document.getElementById("statusArrive")
+?.addEventListener("click", () => {
+  updateServiceStatus("📍 Arribo");
+});
+
+document.getElementById("statusTow")
+?.addEventListener("click", () => {
+  updateServiceStatus("🔗 Cargando Vehículo");
+});
+
+document.getElementById("statusDestination")
+?.addEventListener("click", () => {
+  updateServiceStatus("🏁 Destino");
+});
+
+document.getElementById("statusFinish")
+?.addEventListener("click", () => {
+
+  updateServiceStatus("✅ Finalizado");
+
+  const finished = document.getElementById("finishedServices");
+
+  finished.textContent =
+    Number(finished.textContent) + 1;
+});
+
+/* ========================= */
+/* ACCIONES CABINA */
+/* ========================= */
+
+document.getElementById("callOperator")
+?.addEventListener("click", () => {
+
+  showToast("Llamando operador...");
+
+});
+
+document.getElementById("viewRoute")
+?.addEventListener("click", () => {
+
+  showToast("Mostrando ruta");
+
+});
+
+document.getElementById("refreshMap")
+?.addEventListener("click", () => {
+
+  showToast("Mapa actualizado");
+
+});
+
+document.getElementById("autoAssign")
+?.addEventListener("click", () => {
+
+  const bestUnit = "AX-07";
+
+  selectedUnit = bestUnit;
+
+  assignBtn.textContent =
+    "Asignar a " + bestUnit;
+
+  showToast(
+    "Unidad recomendada: " + bestUnit
+  );
+
+});
