@@ -159,15 +159,67 @@
           <h4>Unidades cercanas</h4>
           <div id="unitList" class="unit-list"></div>
 
-          <button id="assignBtn" class="action green">Asignar a AX-07</button>
-          <button id="reassignBtn" class="action blue">Reasignar solicitud</button>
-          <button id="cancelBtn" class="action red">Cancelar solicitud</button>
-        </aside>
+         <button id="assignBtn" class="action green">Asignar a AX-07</button>
+<button id="reassignBtn" class="action blue">Reasignar solicitud</button>
+<button id="cancelBtn" class="action red">Cancelar solicitud</button>
+
+<div class="extra-panel">
+
+  <h4>Estado del Servicio</h4>
+
+  <div id="currentStatus">
+    Nueva Solicitud
+  </div>
+
+  <button id="statusAssigned">📋 Asignado</button>
+  <button id="statusRoute">🚗 En Camino</button>
+  <button id="statusArrive">📍 Arribo</button>
+  <button id="statusTow">🔗 Cargando Vehículo</button>
+  <button id="statusDestination">🏁 Destino</button>
+  <button id="statusFinish">✅ Finalizado</button>
+
+</div>
+
+<div class="extra-panel">
+
+  <h4>Indicadores Cabina</h4>
+
+  <p>Servicios Hoy: <b id="todayServices">15</b></p>
+  <p>Finalizados: <b id="finishedServices">12</b></p>
+  <p>Cancelados: <b id="cancelledServices">1</b></p>
+  <p>Operadores Online: <b id="connectedOperators">8</b></p>
+
+</div>
+
+<div class="extra-panel">
+
+  <h4>Historial de Servicios</h4>
+
+  <div id="historyList">
+    <div class="history-item">
+      RAS-2024-1057 - Cambio de llanta - AX-07
+    </div>
+  </div>
+
+</div>
+
+<div class="extra-panel">
+
+  <h4>Acciones Cabina</h4>
+
+  <button id="callOperator">📞 Llamar Operador</button>
+  <button id="viewRoute">🗺️ Ver Ruta</button>
+  <button id="refreshMap">🔄 Actualizar Mapa</button>
+  <button id="autoAssign">⚡ Asignación Automática</button>
+
+</div>
+</aside>
       </section>
     </main>
   </div>
 
   <div class="toast" id="toast">Servicio asignado correctamente</div>
+
   <script src="script.js"></script>
 </body>
 </html>
